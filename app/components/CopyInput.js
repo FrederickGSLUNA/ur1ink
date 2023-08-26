@@ -27,23 +27,17 @@ function CopyInput ({ shortUrl }) {
   }
 
   function getCurrentURL () {
-    const protocol = typeof window !== 'undefined' ? window.location.protocol : ''
-    const domain = typeof window !== 'undefined' ? window.location.hostname : ''
-    const port = typeof window !== 'undefined' ? window.location.port : ''
-    const path = typeof window !== 'undefined' ? window.location.pathname : ''
-
-    let currentURL = `${protocol}//${domain}`
-    if (port) {
-      currentURL += `:${port}`
+    if (typeof window !== 'undefined') {
+      return window.location.href
     }
-    currentURL += path
-
-    return currentURL
+    return ''
   }
+
+  const fullShortUrl = shortUrl ? getCurrentURL() + shortUrl : 'https://ur1.ink'
 
   return (
     <div className="flex justify-center">
-      <input ref={inputRef} type="url" defaultValue={getCurrentURL() + shortUrl} value={getCurrentURL() + shortUrl} className="input input-bordered w-full max-w-xs" readOnly/>
+      <input ref={inputRef} type="url" value={fullShortUrl} className="input input-bordered w-full max-w-xs" readOnly/>
       <button onClick={handleCopyClick} className="btn">Copy</button>
     </div>
   )

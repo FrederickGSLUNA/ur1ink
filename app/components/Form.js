@@ -32,19 +32,13 @@ export default function Form () {
   }
 
   function getCurrentURL () {
-    const protocol = typeof window !== 'undefined' ? window.location.protocol : ''
-    const domain = typeof window !== 'undefined' ? window.location.hostname : ''
-    const port = typeof window !== 'undefined' ? window.location.port : ''
-    const path = typeof window !== 'undefined' ? window.location.pathname : ''
-
-    let currentURL = `${protocol}//${domain}`
-    if (port) {
-      currentURL += `:${port}`
+    if (typeof window !== 'undefined') {
+      return window.location.href
     }
-    currentURL += path
-
-    return currentURL
+    return ''
   }
+
+  const fullShortUrl = shortUrl ? getCurrentURL() + shortUrl : 'https://ur1.ink'
 
   return (
     <>
@@ -75,7 +69,7 @@ export default function Form () {
       <aside className='flex items-center justify-center w-full p-20 lg:pr-20'>
         <div className="mockup-browser border border-base-300 w-full">
           <div className="mockup-browser-toolbar">
-            <div className="input border border-base-300">{getCurrentURL() + shortUrl || 'https://ur1.ink'}</div>
+            <div className="input border border-base-300">{fullShortUrl}</div>
           </div>
           <div className="flex justify-center px-4 py-16 border-t border-base-300">
             <div className='w-40'>
@@ -83,9 +77,9 @@ export default function Form () {
                 className='bg-base-100 p-2 border-2 rounded'
                 size={256}
                 style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
-                value={getCurrentURL() + shortUrl || 'https://ur1.ink'}
+                value={fullShortUrl}
                 viewBox={'0 0 256 256'}
-                title={getCurrentURL() + shortUrl || 'https://ur1.ink'}
+                title={fullShortUrl}
                 level='H'
     />
             </div>
