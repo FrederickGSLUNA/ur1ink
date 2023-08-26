@@ -27,10 +27,10 @@ function CopyInput ({ shortUrl }) {
   }
 
   function getCurrentURL () {
-    const protocol = window.location.protocol
-    const domain = window.location.hostname
-    const port = window.location.port
-    const path = window.location.pathname
+    const protocol = typeof window !== 'undefined' ? window.location.protocol : ''
+    const domain = typeof window !== 'undefined' ? window.location.hostname : ''
+    const port = typeof window !== 'undefined' ? window.location.port : ''
+    const path = typeof window !== 'undefined' ? window.location.pathname : ''
 
     let currentURL = `${protocol}//${domain}`
     if (port) {
