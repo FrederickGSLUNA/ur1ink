@@ -36,5 +36,6 @@ next-env.d.ts
 
 .vscode
 
+firebase-copy.json
 firebase.json
 .env

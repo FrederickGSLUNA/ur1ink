@@ -5,7 +5,7 @@ const serviceAccountEnv = {
   type: 'service_account',
   project_id: process.env.NEXT_PUBLIC_PROJECT_ID,
   private_key_id: process.env.NEXT_PUBLIC_PRIVATE_KEY_ID,
-  private_key: process.env.NEXT_PUBLIC_PRIVATE_KEY,
+  private_key: process.env.NEXT_PUBLIC_PRIVATE_KEY ? process.env.NEXT_PUBLIC_PRIVATE_KEY.replace(/\\n/g, '\n') : undefined,
   client_email: process.env.NEXT_PUBLIC_CLIENT_EMAIL,
   client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
   auth_uri: process.env.NEXT_PUBLIC_AUTH_URI,
