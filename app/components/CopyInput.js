@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { getCurrentURL } from '../utils/getCurrentURL'
 import Toastify from 'toastify-js'
 import 'toastify-js/src/toastify.css'
 
@@ -25,6 +24,21 @@ function CopyInput ({ shortUrl }) {
         onClick: function () {} // Callback after click
       }).showToast()
     }
+  }
+
+  function getCurrentURL () {
+    const protocol = window.location.protocol
+    const domain = window.location.hostname
+    const port = window.location.port
+    const path = window.location.pathname
+
+    let currentURL = `${protocol}//${domain}`
+    if (port) {
+      currentURL += `:${port}`
+    }
+    currentURL += path
+
+    return currentURL
   }
 
   return (

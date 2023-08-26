@@ -2,7 +2,6 @@
 import QRCode from 'react-qr-code'
 import { useState } from 'react'
 import CopyInput from './CopyInput'
-import { getCurrentURL } from '../utils/getCurrentURL'
 
 export default function Form () {
   const [url, setUrl] = useState('')
@@ -30,6 +29,21 @@ export default function Form () {
     } catch (error) {
       console.error('Error de red:', error)
     }
+  }
+
+  function getCurrentURL () {
+    const protocol = window.location.protocol
+    const domain = window.location.hostname
+    const port = window.location.port
+    const path = window.location.pathname
+
+    let currentURL = `${protocol}//${domain}`
+    if (port) {
+      currentURL += `:${port}`
+    }
+    currentURL += path
+
+    return currentURL
   }
 
   return (
