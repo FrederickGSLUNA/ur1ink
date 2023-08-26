@@ -42,16 +42,16 @@ export default function Form () {
 
   return (
     <>
-      <article className='grid grid-col-2 w-full h-full gap-12 justify-center'>
-        <div className='prose prose-sm w-full'>
-          <h1 className='text-3xl md:text-5xl font-bold'>URL Shortener</h1>
-          <h2 className='text-lg md:text-2xl'>Shorten your URLs quickly and easily</h2>
+      <article className='flex flex-col gap-12 justify-center w-full lg:pl-32 h-full'>
+        <div className='prose prose-sm w-full text-center lg:text-left'>
+          <h1 className='text-3xl md:text-5xl font-bold mb-2'>URL <span className='bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text'>Shortener</span></h1>
+          <h2 className='text-lg md:text-2xl'>Shorten your URLs <span className='bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text'>quickly</span> and <span className='bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text'>easily</span></h2>
         </div>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full justify-center md:px-4'>
-          <label className="label">
+        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full justify-center px-12 md:px-20 lg:px-0'>
+          <label className="label -mb-2 justify-center lg:justify-normal">
             <span className="label-text">Original URL</span>
           </label>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 justify-center lg:justify-normal'>
             <input
               value={url}
               onChange={(e) => setUrl(e.target.value)}
@@ -66,7 +66,7 @@ export default function Form () {
           shortUrl && <CopyInput shortUrl={shortUrl}/>
         }
       </article>
-      <aside className='flex items-center justify-center w-full p-20 lg:pr-20'>
+      <aside className='flex items-center justify-center w-full p-20 lg:pr-32 h-full bg-accent/10'>
         <div className="mockup-browser border border-base-300 w-full">
           <div className="mockup-browser-toolbar">
             <div className="input border border-base-300">{fullShortUrl}</div>

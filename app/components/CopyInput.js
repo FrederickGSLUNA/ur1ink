@@ -36,7 +36,7 @@ function CopyInput ({ shortUrl }) {
   const fullShortUrl = shortUrl ? getCurrentURL() + shortUrl : 'https://ur1.ink'
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center lg:justify-normal gap-2 px-12 md:px-20 lg:px-0">
       <input ref={inputRef} type="url" value={fullShortUrl} className="input input-bordered w-full max-w-xs" readOnly/>
       <button onClick={handleCopyClick} className="btn">Copy</button>
     </div>
